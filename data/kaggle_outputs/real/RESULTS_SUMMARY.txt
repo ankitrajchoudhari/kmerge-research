@@ -1,0 +1,177 @@
+====================================================================================================
+SEND THIS BACK
+====================================================================================================
+REAL BENCHMARK | mode=FULL_A model=Qwen/Qwen2.5-1.5B-Instruct seeds=[0, 1] tasks=12 train/test=800/150 LoRA r=32 on q_proj+k_proj+v_proj+o_proj K=[2, 4] orders=['random', 'clustered'] dtype=float16 runtime=113 min | regmean pinv fallbacks=0 | whitening ridge retries=0
+
+[1] SINGLE-TASK QUALITY (primary metric: GEC F0.5 / summarization ROUGE-L / QA F1; base = no adapter)
+         base   solo
+task                
+gec_en  0.327  0.450
+gec_de  0.341  0.471
+gec_es  0.362  0.495
+gec_it  0.273  0.492
+sum_en  0.345  0.422
+sum_de  0.294  0.359
+sum_es  0.313  0.379
+sum_it  0.303  0.347
+qa_en   0.798  0.866
+qa_de   0.453  0.537
+qa_es   0.551  0.669
+qa_it   0.518  0.631
+
+[2] LEADERBOARD, K = 2 slots (normalised score = task score / own adapter; mean over tasks, seeds, orders)
+                mean    gec    sum     qa  worst_task                 group                       storage
+method                                                                                                   
+kshare         0.989  0.977  0.993  0.997       0.947         sharing (new)       1 LoRA + r x r per task
+split          0.989  0.978  0.990  0.999       0.946  sharing (prior idea)                        1 LoRA
+wsplit         0.988  0.977  0.985  1.003       0.947         sharing (new)  1 LoRA (+32 inputs per task)
+wadaptive      0.988  0.977  0.986  1.001       0.944         sharing (new)  1 LoRA (+32 inputs per task)
+adaptive       0.988  0.980  0.986  0.998       0.949         sharing (new)                        1 LoRA
+adaptive_fair  0.986  0.976  0.985  0.998       0.936         sharing (new)                        1 LoRA
+regmean        0.956  0.891  0.974  1.004       0.786       merging (prior)  1 LoRA (+32 inputs per task)
+ties           0.956  0.904  0.972  0.992       0.829       merging (prior)                        1 LoRA
+dare_ties      0.954  0.902  0.981  0.979       0.835       merging (prior)                        1 LoRA
+linear         0.918  0.810  0.949  0.996       0.691       merging (prior)                        1 LoRA
+kmerge         0.908  0.791  0.943  0.991       0.657     merging (K-Merge)                        1 LoRA
+
+[3] SIGNIFICANCE vs K-Merge, K = 2 (paired bootstrap over test examples, 2000 draws, Holm-corrected)
+       method   mean           95CI  worst_task  d_vs_kmerge  p_vs_kmerge  p_holm
+       kshare 0.9891 [0.983, 0.995]      0.9468       0.0809          0.0     0.0
+        split 0.9889 [0.982, 0.996]      0.9459       0.0807          0.0     0.0
+       wsplit 0.9883 [0.981, 0.996]      0.9471       0.0801          0.0     0.0
+    wadaptive 0.9882 [0.981, 0.996]      0.9444       0.0800          0.0     0.0
+     adaptive 0.9881 [0.981, 0.995]      0.9485       0.0800          0.0     0.0
+adaptive_fair 0.9865 [0.979, 0.994]      0.9359       0.0783          0.0     0.0
+      regmean 0.9564 [0.942, 0.971]      0.7857       0.0482          0.0     0.0
+         ties 0.9558 [0.938, 0.975]      0.8292       0.0476          0.0     0.0
+    dare_ties 0.9540 [0.935, 0.973]      0.8347       0.0458          0.0     0.0
+       linear 0.9184 [0.901, 0.938]      0.6912       0.0102          0.0     0.0
+       kmerge 0.9082 [0.891, 0.928]      0.6566          NaN          NaN     NaN
+
+[4] KEY CONTRASTS, K = 2 (difference in normalised score, 95% CI, two-sided p)
+             contrast  d_mean        mean_95CI  p_mean  d_worst       worst_95CI  p_worst  p_mean_holm
+    wadaptive - split -0.0007 [-0.005, +0.003]   0.750  -0.0015 [-0.018, +0.012]    0.626        1.000
+       wsplit - split -0.0006 [-0.004, +0.003]   0.796   0.0012 [-0.018, +0.012]    0.790        1.000
+   wadaptive - wsplit -0.0001 [-0.003, +0.003]   0.954  -0.0027 [-0.015, +0.013]    0.812        1.000
+ wadaptive - adaptive  0.0001 [-0.004, +0.004]   0.946  -0.0041 [-0.019, +0.013]    0.663        1.000
+  wadaptive - regmean  0.0318 [+0.018, +0.045]   0.000   0.1587 [+0.090, +0.231]    0.000        0.000
+     wsplit - regmean  0.0319 [+0.019, +0.045]   0.000   0.1614 [+0.090, +0.234]    0.000        0.000
+     adaptive - split -0.0007 [-0.003, +0.001]   0.480   0.0026 [-0.012, +0.009]    0.974        1.000
+adaptive_fair - split -0.0024 [-0.005, +0.000]   0.076  -0.0100 [-0.024, +0.005]    0.196        0.608
+       kshare - split  0.0002 [-0.004, +0.005]   0.950   0.0009 [-0.013, +0.015]    0.905        1.000
+    adaptive - kshare -0.0010 [-0.005, +0.003]   0.674   0.0017 [-0.017, +0.014]    0.879        1.000
+      split - regmean  0.0325 [+0.018, +0.046]   0.000   0.1602 [+0.090, +0.236]    0.000        0.000
+   adaptive - regmean  0.0317 [+0.017, +0.045]   0.000   0.1628 [+0.091, +0.236]    0.000        0.000
+     kshare - regmean  0.0327 [+0.019, +0.047]   0.000   0.1611 [+0.092, +0.237]    0.000        0.000
+       split - kmerge  0.0807 [+0.063, +0.098]   0.000   0.2893 [+0.193, +0.377]    0.000        0.000
+   wadaptive - kmerge  0.0800 [+0.063, +0.097]   0.000   0.2878 [+0.192, +0.373]    0.000        0.000
+    adaptive - kmerge  0.0800 [+0.062, +0.097]   0.000   0.2919 [+0.194, +0.375]    0.000        0.000
+     regmean - kmerge  0.0482 [+0.036, +0.060]   0.000   0.1291 [+0.068, +0.181]    0.000        0.000
+      linear - kmerge  0.0102 [+0.006, +0.014]   0.000   0.0346 [+0.015, +0.055]    0.000        0.000
+
+[2] LEADERBOARD, K = 4 slots (normalised score = task score / own adapter; mean over tasks, seeds, orders)
+                mean    gec    sum     qa  worst_task                 group                       storage
+method                                                                                                   
+wadaptive      0.994  0.984  0.998  1.001       0.956         sharing (new)  1 LoRA (+32 inputs per task)
+kshare         0.994  0.983  1.001  0.999       0.965         sharing (new)       1 LoRA + r x r per task
+wsplit         0.993  0.983  0.997  1.001       0.961         sharing (new)  1 LoRA (+32 inputs per task)
+split          0.993  0.981  1.000  0.999       0.955  sharing (prior idea)                        1 LoRA
+adaptive       0.993  0.984  0.998  0.998       0.962         sharing (new)                        1 LoRA
+adaptive_fair  0.993  0.982  0.999  0.998       0.961         sharing (new)                        1 LoRA
+regmean        0.971  0.911  0.996  1.007       0.824       merging (prior)  1 LoRA (+32 inputs per task)
+ties           0.957  0.902  0.979  0.990       0.842       merging (prior)                        1 LoRA
+dare_ties      0.956  0.893  0.996  0.980       0.828       merging (prior)                        1 LoRA
+linear         0.942  0.837  0.986  1.004       0.726       merging (prior)                        1 LoRA
+kmerge         0.936  0.822  0.985  1.002       0.700     merging (K-Merge)                        1 LoRA
+
+[3] SIGNIFICANCE vs K-Merge, K = 4 (paired bootstrap over test examples, 2000 draws, Holm-corrected)
+       method   mean           95CI  worst_task  d_vs_kmerge  p_vs_kmerge  p_holm
+    wadaptive 0.9943 [0.988, 1.001]      0.9558       0.0584        0.000   0.000
+       kshare 0.9943 [0.989, 1.000]      0.9654       0.0583        0.000   0.000
+       wsplit 0.9935 [0.988, 1.000]      0.9609       0.0575        0.000   0.000
+        split 0.9932 [0.987, 0.999]      0.9547       0.0573        0.000   0.000
+     adaptive 0.9931 [0.987, 0.999]      0.9625       0.0572        0.000   0.000
+adaptive_fair 0.9930 [0.987, 0.999]      0.9611       0.0571        0.000   0.000
+      regmean 0.9713 [0.958, 0.985]      0.8242       0.0353        0.000   0.000
+         ties 0.9569 [0.940, 0.975]      0.8417       0.0210        0.005   0.010
+    dare_ties 0.9561 [0.938, 0.974]      0.8284       0.0201        0.022   0.022
+       linear 0.9423 [0.926, 0.960]      0.7260       0.0064        0.001   0.003
+       kmerge 0.9360 [0.919, 0.954]      0.7003          NaN          NaN     NaN
+
+[4] KEY CONTRASTS, K = 4 (difference in normalised score, 95% CI, two-sided p)
+             contrast  d_mean        mean_95CI  p_mean  d_worst       worst_95CI  p_worst  p_mean_holm
+    wadaptive - split  0.0011 [-0.002, +0.005]   0.504   0.0012 [-0.014, +0.015]    0.992        1.000
+       wsplit - split  0.0003 [-0.003, +0.003]   0.833   0.0063 [-0.011, +0.018]    0.687        1.000
+   wadaptive - wsplit  0.0008 [-0.001, +0.003]   0.472  -0.0051 [-0.016, +0.008]    0.660        1.000
+ wadaptive - adaptive  0.0012 [-0.002, +0.005]   0.470  -0.0067 [-0.020, +0.011]    0.569        1.000
+  wadaptive - regmean  0.0231 [+0.011, +0.035]   0.000   0.1316 [+0.081, +0.195]    0.000        0.000
+     wsplit - regmean  0.0222 [+0.009, +0.034]   0.000   0.1367 [+0.081, +0.200]    0.000        0.000
+     adaptive - split -0.0001 [-0.002, +0.002]   0.930   0.0078 [-0.007, +0.017]    0.456        1.000
+adaptive_fair - split -0.0002 [-0.002, +0.002]   0.876   0.0065 [-0.008, +0.012]    0.722        1.000
+       kshare - split  0.0011 [-0.003, +0.005]   0.592   0.0107 [-0.006, +0.020]    0.324        1.000
+    adaptive - kshare -0.0012 [-0.005, +0.002]   0.513  -0.0029 [-0.015, +0.012]    0.740        1.000
+      split - regmean  0.0220 [+0.009, +0.034]   0.000   0.1305 [+0.078, +0.195]    0.000        0.000
+   adaptive - regmean  0.0219 [+0.009, +0.034]   0.000   0.1383 [+0.085, +0.198]    0.000        0.000
+     kshare - regmean  0.0230 [+0.010, +0.035]   0.000   0.1412 [+0.087, +0.201]    0.000        0.000
+       split - kmerge  0.0573 [+0.040, +0.073]   0.000   0.2543 [+0.164, +0.345]    0.000        0.000
+   wadaptive - kmerge  0.0584 [+0.042, +0.074]   0.000   0.2555 [+0.165, +0.346]    0.000        0.000
+    adaptive - kmerge  0.0572 [+0.040, +0.073]   0.000   0.2621 [+0.169, +0.348]    0.000        0.000
+     regmean - kmerge  0.0353 [+0.025, +0.046]   0.000   0.1238 [+0.061, +0.174]    0.000        0.000
+      linear - kmerge  0.0064 [+0.002, +0.010]   0.001   0.0257 [+0.001, +0.049]    0.042        0.009
+
+[5] WHICH TASKS SHARED A SLOT (K-Merge's cosine rule, same for every method)
+  seed 0 K=2 clustered: gec_en+gec_de+gec_es+gec_it+sum_en+sum_es+sum_it+qa_en+qa_de+qa_es+qa_it  |  sum_de
+  seed 0 K=2 random   : sum_en+sum_de+sum_es+sum_it+qa_en+qa_de+qa_es+qa_it  |  gec_en+gec_de+gec_es+gec_it
+  seed 0 K=4 clustered: gec_en+gec_de+gec_es+gec_it+sum_en+qa_en+qa_de+qa_es+qa_it  |  sum_de  |  sum_it  |  sum_es
+  seed 0 K=4 random   : sum_en+sum_de+sum_es  |  gec_en+gec_de+gec_es+gec_it  |  qa_en+qa_de+qa_es+qa_it  |  sum_it
+  seed 1 K=2 clustered: gec_en+gec_de+gec_es+gec_it+sum_en+sum_es+sum_it+qa_en+qa_de+qa_es+qa_it  |  sum_de
+  seed 1 K=2 random   : qa_en+qa_de+qa_es+qa_it  |  gec_en+gec_de+gec_es+gec_it+sum_en+sum_de+sum_es+sum_it
+  seed 1 K=4 clustered: sum_es  |  sum_de  |  gec_en+gec_de+gec_es+gec_it+sum_it+qa_en+qa_de+qa_es+qa_it  |  sum_en
+  seed 1 K=4 random   : qa_en+qa_de+qa_es+qa_it  |  sum_de  |  sum_en+sum_es+sum_it  |  gec_en+gec_de+gec_es+gec_it
+
+[6] CAPACITY STRESS TEST: all 12 tasks in ONE slot that has r_s directions (normalised score; seeds [0])
+            mean               worst_task              
+r_slot        4      8      16         4      8      16
+method                                                 
+kshare     0.944  0.967  0.978      0.792  0.876  0.932
+adaptive   0.907  0.943  0.960      0.816  0.806  0.831
+wadaptive  0.889  0.930  0.968      0.768  0.811  0.877
+kmerge     0.879  0.881  0.884      0.636  0.648  0.665
+split      0.871  0.910  0.982      0.813  0.816  0.928
+wsplit     0.866  0.904  0.979      0.813  0.816  0.918
+regmean    0.864  0.893  0.920      0.623  0.643  0.682
+
+[6b] STRESS CONTRASTS, r_s = 4 (paired bootstrap over test examples; Holm over this list)
+          contrast  d_mean        mean_95CI  p_mean  p_mean_holm
+ wadaptive - split  0.0182 [-0.001, +0.038]   0.065        0.260
+  adaptive - split  0.0355 [+0.017, +0.054]   0.000        0.000
+    kshare - split  0.0729 [+0.052, +0.092]   0.000        0.000
+    wsplit - split -0.0049 [-0.014, +0.004]   0.281        0.771
+wadaptive - kmerge  0.0104 [-0.008, +0.028]   0.257        0.771
+   kshare - kmerge  0.0650 [+0.045, +0.086]   0.000        0.000
+    split - kmerge -0.0079 [-0.032, +0.015]   0.503        0.771
+
+[6b] STRESS CONTRASTS, r_s = 8 (paired bootstrap over test examples; Holm over this list)
+           contrast  d_mean        mean_95CI  p_mean  p_mean_holm
+  wadaptive - split  0.0199 [+0.001, +0.039]   0.034        0.102
+   adaptive - split  0.0323 [+0.015, +0.049]   0.000        0.000
+     kshare - split  0.0569 [+0.040, +0.074]   0.000        0.000
+     wsplit - split -0.0067 [-0.017, +0.003]   0.195        0.196
+wadaptive - regmean  0.0375 [+0.020, +0.056]   0.000        0.000
+   kshare - regmean  0.0745 [+0.055, +0.095]   0.000        0.000
+    split - regmean  0.0176 [-0.003, +0.039]   0.098        0.196
+ wadaptive - kmerge  0.0489 [+0.030, +0.068]   0.000        0.000
+     split - kmerge  0.0290 [+0.006, +0.051]   0.017        0.068
+
+[6b] STRESS CONTRASTS, r_s = 16 (paired bootstrap over test examples; Holm over this list)
+           contrast  d_mean        mean_95CI  p_mean  p_mean_holm
+  wadaptive - split -0.0133 [-0.025, -0.003]   0.016        0.048
+   adaptive - split -0.0213 [-0.034, -0.010]   0.000        0.000
+     kshare - split -0.0036 [-0.016, +0.007]   0.502        1.000
+     wsplit - split -0.0027 [-0.013, +0.007]   0.627        1.000
+wadaptive - regmean  0.0490 [+0.031, +0.066]   0.000        0.000
+   kshare - regmean  0.0586 [+0.040, +0.076]   0.000        0.000
+    split - regmean  0.0622 [+0.045, +0.081]   0.000        0.000
+ wadaptive - kmerge  0.0842 [+0.064, +0.104]   0.000        0.000
+     split - kmerge  0.0974 [+0.077, +0.119]   0.000        0.000
+====================================================================================================

@@ -1,0 +1,16 @@
+# large or regenerated files (download_kaggle.py and the analysis recreate them)
+data/adapters/
+data/npz/
+data/cache/
+*.pt
+*.npz
+
+# Python and notebooks
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# report builds
+reports/node_modules/
+*.part
+.DS_Store

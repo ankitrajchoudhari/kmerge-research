@@ -1,0 +1,283 @@
+====================================================================================================
+SEND THIS BACK
+====================================================================================================
+mode=FULL model=Qwen/Qwen2.5-1.5B-Instruct seeds=[0, 1, 2] pairs=6 methods=22 train/val/test=128/40/100 epochs=3 lr=0.0005 shared_init=True layers=28 runtime=485 min
+
+[1] ADAPTER QUALITY (EM on test; base = no adapter)
+      base_em  solo_em  solo_f1  norm_dW
+lang                                    
+de       0.73    0.927    0.982    1.125
+en       0.57    1.000    1.000    1.253
+fr       0.90    0.980    0.996    1.071
+hi       0.49    0.993    0.999    1.171
+
+[2] LEADERBOARD (normalised EM = merged / own adapter; 1.0 = no loss)
+                  group              data  avg_normEM  worst_normEM     EM     F1   GLEU   edit  win_vs_kmerge  merge_ms   n
+method                                                                                                                      
+split           K-Share              none       1.000         1.000  0.975  0.994  0.986  0.997          0.889   105.240  18
+kshare_eq       K-Share              none       0.999         0.999  0.974  0.994  0.986  0.997          0.889   806.128  18
+kshare          K-Share              none       0.999         0.998  0.974  0.994  0.985  0.997          0.889   812.865  18
+regmean_cf        prior      32 unlabeled       0.998         0.993  0.974  0.994  0.985  0.997          0.944  3443.900  18
+gramU_nofair       GRAM      32 unlabeled       0.998         0.992  0.973  0.994  0.985  0.997          0.944  3534.672  18
+regmeanG_cf        GRAM  task description       0.997         0.991  0.972  0.994  0.984  0.997          0.833  3488.218  18
+gramG_nofair       GRAM  task description       0.997         0.991  0.972  0.994  0.984  0.997          0.833  3580.566  18
+gramU              GRAM      32 unlabeled       0.996         0.990  0.972  0.993  0.984  0.997          0.889  3542.358  18
+gramG              GRAM  task description       0.996         0.990  0.971  0.993  0.984  0.997          0.778  3585.126  18
+gram_iso           GRAM              none       0.991         0.982  0.966  0.993  0.982  0.997          0.333   139.354  18
+casc_soft        lab v1              none       0.991         0.982  0.966  0.992  0.981  0.997          0.389   198.694  18
+ocp              lab v1       labeled val       0.991         0.982  0.966  0.992  0.981  0.997          0.333   180.571  18
+delta_avg         prior              none       0.990         0.981  0.966  0.993  0.981  0.997          0.333    59.961  18
+dare              prior       labeled val       0.990         0.981  0.966  0.993  0.981  0.997          0.278   272.476  18
+ties              prior       labeled val       0.990         0.979  0.966  0.993  0.981  0.997          0.611  1558.935  18
+kmerge            prior              none       0.989         0.981  0.965  0.992  0.980  0.997            NaN     5.182  18
+iso_c             prior       labeled val       0.989         0.978  0.964  0.992  0.980  0.997          0.222    78.776  18
+knots_ties        prior       labeled val       0.989         0.977  0.964  0.992  0.980  0.997          0.611   159.007  18
+slerp             prior              none       0.989         0.976  0.964  0.992  0.980  0.997          0.556    77.653  18
+task_arith        prior       labeled val       0.988         0.976  0.964  0.992  0.980  0.997          0.389    67.324  18
+magmax            prior              none       0.987         0.972  0.963  0.992  0.979  0.997          0.500   238.206  18
+tsv               prior              none       0.981         0.961  0.958  0.991  0.976  0.996          0.556   157.105  18
+layer_sel        lab v1       labeled val       0.937         0.880  0.913  0.979  0.951  0.993          0.111   119.459  18
+selfgram_ridge     GRAM              none       0.755         0.685  0.737  0.941  0.857  0.977          0.000   142.100  18
+selfgram_cf       prior              none       0.533         0.385  0.519  0.854  0.709  0.920          0.000   123.645  18
+
+[3] FAILURE MODES (copy_underfix=F1 dilution, leak=F2 interference, imbalance=F3, norm_dominance_rho=F4)
+                copy_underfix  overcorrect   leak  imbalance  trunc_loss  norm_dominance_rho
+method                                                                                      
+split                   0.011        0.004  0.000      0.000       0.099                 NaN
+kshare_eq               0.012        0.004  0.000      0.001       0.119               0.102
+kshare                  0.012        0.004  0.000      0.002       0.093               0.087
+regmean_cf              0.015        0.007  0.000      0.011       0.013               0.042
+gramU_nofair            0.016        0.007  0.000      0.011       0.005               0.056
+regmeanG_cf             0.016        0.007  0.000      0.013       0.016              -0.079
+gramG_nofair            0.017        0.007  0.000      0.013       0.005              -0.027
+gramU                   0.016        0.007  0.000      0.013       0.007               0.208
+gramG                   0.018        0.007  0.000      0.012       0.007               0.171
+gram_iso                0.023        0.007  0.000      0.017       0.011               0.758
+casc_soft               0.021        0.004  0.000      0.018       0.009               0.607
+ocp                     0.022        0.006  0.000      0.018       0.009               0.642
+delta_avg               0.022        0.006  0.000      0.018       0.011               0.748
+dare                    0.023        0.006  0.000      0.019       0.477               0.710
+ties                    0.023        0.007  0.000      0.021       0.250               0.672
+kmerge                  0.025        0.008  0.000      0.017       0.000               0.677
+iso_c                   0.024        0.007  0.000      0.021       0.000               0.591
+knots_ties              0.025        0.004  0.000      0.024       0.048               0.507
+slerp                   0.025        0.004  0.000      0.025       0.011               0.722
+task_arith              0.027        0.003  0.000      0.024       0.011               0.744
+magmax                  0.028        0.003  0.000      0.030       0.119               0.448
+tsv                     0.036        0.001  0.000      0.040       0.000               0.514
+layer_sel               0.066        0.026  0.000      0.114       0.009               0.160
+selfgram_ridge          0.166        0.094  0.003      0.140       0.006              -0.156
+selfgram_cf             0.142        0.293  0.008      0.297       0.007              -0.517
+
+[4] WORST-LANGUAGE NORMALISED EM PER PAIR
+pair            de-fr  de-hi  en-de  en-fr  en-hi  fr-hi
+method                                                  
+split            1.00   1.00   1.00   1.00   1.00   1.00
+kshare_eq        1.00   1.00   1.00   1.00   1.00   1.00
+kshare           0.99   1.00   1.00   1.00   1.00   1.00
+regmean_cf       0.99   0.98   0.99   1.00   1.00   1.00
+gramU_nofair     0.98   0.98   0.99   1.00   1.00   1.00
+regmeanG_cf      0.98   0.98   0.99   1.00   1.00   1.00
+gramG_nofair     0.98   0.98   0.99   1.00   1.00   1.00
+gramU            0.98   0.98   0.99   1.00   1.00   1.00
+gramG            0.98   0.98   0.99   1.00   1.00   0.99
+gram_iso         0.98   0.96   0.98   0.99   1.00   0.99
+casc_soft        0.98   0.96   0.97   0.99   1.00   1.00
+ocp              0.98   0.96   0.97   0.99   1.00   1.00
+delta_avg        0.98   0.96   0.98   0.99   1.00   0.99
+dare             0.97   0.96   0.98   0.99   1.00   0.99
+ties             0.98   0.93   0.98   0.99   1.00   0.99
+kmerge           0.97   0.96   0.97   0.99   1.00   0.99
+iso_c            0.96   0.96   0.96   0.99   1.00   0.99
+knots_ties       0.97   0.91   0.99   1.00   1.00   0.99
+slerp            0.98   0.92   0.98   0.99   1.00   0.98
+task_arith       0.98   0.93   0.98   0.99   1.00   0.99
+magmax           0.99   0.89   0.98   1.00   1.00   0.98
+tsv              0.97   0.85   0.98   0.99   1.00   0.97
+layer_sel        0.98   0.89   0.95   0.96   0.54   0.97
+selfgram_ridge   0.84   0.53   0.73   0.80   0.72   0.49
+selfgram_cf      0.56   0.34   0.36   0.48   0.24   0.33
+
+[5] WHICH SCORE PREDICTS DAMAGE? Spearman rho with (1 - normalised EM); higher = better (F5, F6)
+              scope   n  cosine (K-Merge)  self-Gram distortion  generated-input distortion (data-free)  unlabeled-input distortion
+K-Merge merges only  36            -0.342                 0.194                                   0.036                       0.005
+ all methods pooled 900            -0.221                 0.047                                   0.434                       0.431
+
+[6] LAYERS WITH MOST FUNCTIONAL CONFLICT (top 5 per pair)
+  de-fr: 27, 18, 26, 24, 1
+  de-hi: 27, 26, 0, 24, 19
+  en-de: 13, 12, 10, 11, 8
+  en-fr: 8, 9, 13, 12, 10
+  en-hi: 0, 26, 1, 2, 27
+  fr-hi: 0, 26, 24, 3, 27
+
+[7] ONLINE K-MERGE (all arrival orders): policy x merge rule
+  set      rule      policy  avg_normEM  worst_normEM  worst_order_avg  order_spread_std  runs
+3lang delta_avg  global_cos       0.990         0.976            0.979             0.008    18
+3lang delta_avg global_dist       0.990         0.976            0.979             0.008    18
+3lang delta_avg      kmerge       0.990         0.975            0.979             0.007    18
+3lang delta_avg      oracle       0.994         0.983            0.979             0.007    18
+3lang     gramG  global_cos       0.995         0.982            0.993             0.002    18
+3lang     gramG global_dist       0.995         0.982            0.993             0.002    18
+3lang     gramG      kmerge       0.995         0.983            0.993             0.002    18
+3lang     gramG      oracle       1.000         0.993            0.993             0.006    18
+3lang     gramU  global_cos       0.995         0.979            0.993             0.003    18
+3lang     gramU global_dist       0.995         0.979            0.993             0.003    18
+3lang     gramU      kmerge       0.995         0.981            0.986             0.005    18
+3lang     gramU      oracle       0.995         0.986            0.986             0.007    18
+3lang    kmerge  global_cos       0.988         0.972            0.979             0.007    18
+3lang    kmerge global_dist       0.988         0.972            0.979             0.007    18
+3lang    kmerge      kmerge       0.989         0.972            0.979             0.007    18
+3lang    kmerge      oracle       0.997         0.990            0.997             0.000    18
+3lang    kshare global_loss       0.998         0.993            0.993             0.004    18
+3lang    kshare      kmerge       0.998         0.995            0.993             0.003    18
+3lang    kshare  layer_loss       0.999         0.996            0.996             0.002    18
+3lang     split global_loss       1.000         1.000            1.000             0.000    18
+3lang     split      kmerge       1.000         1.000            1.000             0.000    18
+3lang     split  layer_loss       1.000         1.000            1.000             0.000    18
+3lang      ties  global_cos       0.994         0.986            0.986             0.006    18
+3lang      ties global_dist       0.994         0.986            0.986             0.006    18
+3lang      ties      kmerge       0.993         0.984            0.979             0.007    18
+3lang      ties      oracle       0.997         0.986            0.986             0.006    18
+3lang       tsv  global_cos       0.992         0.971            0.975             0.013    18
+3lang       tsv global_dist       0.992         0.971            0.975             0.013    18
+3lang       tsv      kmerge       0.992         0.972            0.975             0.011    18
+3lang       tsv      oracle       0.999         0.991            0.996             0.003    18
+4lang delta_avg  global_cos       0.986         0.965            0.979             0.005    72
+4lang delta_avg global_dist       0.986         0.965            0.979             0.005    72
+4lang delta_avg      kmerge       0.988         0.967            0.979             0.005    72
+4lang delta_avg      oracle       0.992         0.975            0.982             0.007    72
+4lang     gramG  global_cos       0.991         0.973            0.984             0.005    72
+4lang     gramG global_dist       0.991         0.972            0.984             0.005    72
+4lang     gramG      kmerge       0.993         0.976            0.984             0.005    72
+4lang     gramG      oracle       0.995         0.985            0.984             0.004    72
+4lang     gramU  global_cos       0.996         0.981            0.990             0.003    72
+4lang     gramU global_dist       0.995         0.979            0.990             0.004    72
+4lang     gramU      kmerge       0.996         0.981            0.987             0.004    72
+4lang     gramU      oracle       0.996         0.985            0.987             0.006    72
+4lang    kmerge  global_cos       0.983         0.957            0.974             0.006    72
+4lang    kmerge global_dist       0.984         0.957            0.974             0.005    72
+4lang    kmerge      kmerge       0.985         0.961            0.974             0.006    72
+4lang    kmerge      oracle       0.990         0.972            0.982             0.006    72
+4lang    kshare global_loss       0.998         0.993            0.995             0.003    72
+4lang    kshare      kmerge       0.998         0.994            0.995             0.001    72
+4lang    kshare  layer_loss       0.999         0.996            0.995             0.002    72
+4lang     split global_loss       1.000         1.000            1.000             0.000    72
+4lang     split      kmerge       0.999         0.997            0.997             0.001    72
+4lang     split  layer_loss       1.000         1.000            1.000             0.000    72
+4lang      ties  global_cos       0.982         0.939            0.976             0.005    72
+4lang      ties global_dist       0.986         0.953            0.976             0.009    72
+4lang      ties      kmerge       0.987         0.957            0.976             0.008    72
+4lang      ties      oracle       0.993         0.971            0.982             0.006    72
+4lang       tsv  global_cos       0.937         0.812            0.890             0.030    72
+4lang       tsv global_dist       0.969         0.894            0.906             0.025    72
+4lang       tsv      kmerge       0.962         0.885            0.890             0.035    72
+4lang       tsv      oracle       0.994         0.972            0.981             0.008    72
+
+[9] MERGE vs SHARE (pairwise; functional_damage = output change on real inputs, lower is better)
+                                method  avg_normEM  worst_normEM  functional_damage  leak  copy_underfix
+                     K-Merge (average)       0.989         0.981              0.485   0.0          0.025
+               best merge (regmean_cf)       0.998         0.993              0.256   0.0          0.015
+split: own top directions (TSV-C idea)       1.000         1.000              0.015   0.0          0.011
+                         K-Share (new)       0.999         0.998              0.016   0.0          0.012
+          K-Share, storage-exact (new)       0.999         0.999              0.021   0.0          0.012
+    storage: K-Share cores cost 0.33% of one adapter per task; kshare_eq fits inside one slot exactly
+
+[10] ONLINE: merging vs sharing (all arrival orders)
+  set   rule      policy  avg_normEM  worst_normEM  worst_order_avg  order_spread_std  runs
+3lang  gramG global_dist       0.995         0.982            0.993             0.002    18
+3lang kmerge      kmerge       0.989         0.972            0.979             0.007    18
+3lang kshare global_loss       0.998         0.993            0.993             0.004    18
+3lang kshare      kmerge       0.998         0.995            0.993             0.003    18
+3lang kshare  layer_loss       0.999         0.996            0.996             0.002    18
+3lang  split global_loss       1.000         1.000            1.000             0.000    18
+4lang  gramG global_dist       0.991         0.972            0.984             0.005    72
+4lang kmerge      kmerge       0.985         0.961            0.974             0.006    72
+4lang kshare global_loss       0.998         0.993            0.995             0.003    72
+4lang kshare      kmerge       0.998         0.994            0.995             0.001    72
+4lang kshare  layer_loss       0.999         0.996            0.995             0.002    72
+4lang  split global_loss       1.000         1.000            1.000             0.000    72
+
+[8] VAL-SELECTED HYPER-PARAMETERS (most common per method)
+method
+casc_soft                                       -
+dare                                     drop=0.5
+delta_avg                                       -
+gramG                       fair=True,whiten=True
+gramG_nofair               fair=False,whiten=True
+gramU                       fair=True,whiten=True
+gramU_nofair               fair=False,whiten=True
+gram_iso            fair=True,rho=1.0,whiten=True
+iso_c                                   alpha=1.0
+kmerge                                          -
+knots_ties                               keep=0.2
+kshare                                          -
+kshare_eq                                       -
+layer_sel                                  th=0.2
+magmax                                          -
+ocp                                        th=0.2
+regmeanG_cf               fair=False,whiten=False
+regmean_cf                fair=False,whiten=False
+selfgram_cf       fair=False,rho=0.0,whiten=False
+selfgram_ridge      fair=True,rho=0.5,whiten=True
+slerp                                           -
+split                                           -
+task_arith                                lam=0.5
+ties                                     keep=0.1
+tsv                                             -
+
+[11] SIGNIFICANCE (paired bootstrap over test sentences, 4000 draws; p vs K-Merge, Holm-corrected)
+        method  avg_normEM       avg_95CI  worst_normEM     worst_95CI  d_avg_vs_kmerge  p_avg_holm  p_worst_holm sentences_won/lost  mcnemar_p_holm
+         split      1.0000 [0.997, 1.003]        1.0000 [0.995, 1.000]           0.0108      0.0560        0.0000            +52/-15          0.0001
+     kshare_eq      0.9994 [0.996, 1.002]        0.9988 [0.993, 1.000]           0.0101      0.0600        0.0000            +50/-15          0.0003
+        kshare      0.9991 [0.996, 1.001]        0.9982 [0.993, 1.000]           0.0098      0.0630        0.0000            +50/-16          0.0005
+    regmean_cf      0.9984 [0.994, 1.003]        0.9929 [0.983, 0.998]           0.0092      0.0190        0.0000             +40/-8          0.0001
+  gramU_nofair      0.9979 [0.993, 1.002]        0.9923 [0.983, 0.998]           0.0086      0.0190        0.0150             +39/-9          0.0003
+   regmeanG_cf      0.9973 [0.992, 1.003]        0.9906 [0.980, 0.996]           0.0081      0.0000        0.0000             +32/-4          0.0000
+  gramG_nofair      0.9970 [0.991, 1.002]        0.9906 [0.980, 0.996]           0.0078      0.0000        0.0000             +32/-5          0.0001
+         gramU      0.9964 [0.992, 1.001]        0.9900 [0.980, 0.996]           0.0072      0.0715        0.0280            +35/-10          0.0032
+         gramG      0.9961 [0.991, 1.001]        0.9900 [0.980, 0.996]           0.0069      0.0510        0.0455             +31/-7          0.0016
+      gram_iso      0.9910 [0.983, 0.998]        0.9825 [0.967, 0.990]           0.0017      0.9960        1.0000              +7/-1          0.7734
+     casc_soft      0.9909 [0.985, 0.996]        0.9817 [0.970, 0.989]           0.0016      1.0000        1.0000            +23/-17          1.0000
+           ocp      0.9906 [0.984, 0.996]        0.9818 [0.970, 0.988]           0.0014      1.0000        1.0000            +21/-16          1.0000
+     delta_avg      0.9904 [0.983, 0.998]        0.9813 [0.966, 0.989]           0.0011      1.0000        1.0000              +8/-4          1.0000
+          dare      0.9901 [0.982, 0.997]        0.9807 [0.966, 0.989]           0.0008      1.0000        1.0000              +7/-4          1.0000
+          ties      0.9900 [0.983, 0.997]        0.9794 [0.965, 0.986]           0.0008      1.0000        1.0000            +16/-13          1.0000
+        kmerge      0.9892 [0.981, 0.997]        0.9808 [0.965, 0.989]              NaN         NaN           NaN                NaN             NaN
+         iso_c      0.9889 [0.981, 0.996]        0.9783 [0.964, 0.988]          -0.0004      1.0000        1.0000              +7/-8          1.0000
+    knots_ties      0.9887 [0.983, 0.995]        0.9769 [0.965, 0.984]          -0.0005      1.0000        1.0000            +23/-24          1.0000
+         slerp      0.9885 [0.982, 0.995]        0.9759 [0.963, 0.984]          -0.0007      1.0000        1.0000            +16/-18          1.0000
+    task_arith      0.9882 [0.982, 0.995]        0.9764 [0.963, 0.984]          -0.0010      1.0000        1.0000            +17/-20          1.0000
+        magmax      0.9872 [0.982, 0.992]        0.9721 [0.961, 0.979]          -0.0020      1.0000        1.0000            +33/-39          1.0000
+           tsv      0.9812 [0.975, 0.988]        0.9611 [0.949, 0.972]          -0.0081      1.0000        0.3420            +52/-78          0.3353
+     layer_sel      0.9375 [0.928, 0.947]        0.8803 [0.861, 0.896]          -0.0518      0.0000        0.0000           +17/-202          0.0000
+selfgram_ridge      0.7554 [0.738, 0.773]        0.6855 [0.657, 0.705]          -0.2339      0.0000        0.0000           +64/-883          0.0000
+   selfgram_cf      0.5333 [0.514, 0.552]        0.3849 [0.359, 0.408]          -0.4560      0.0000        0.0000          +44/-1649          0.0000
+
+[12] KEY CONTRASTS (difference in normalised EM, 95% CI, two-sided p; McNemar on exact matches)
+              contrast  d_avg_normEM         avg_95CI  p_avg  d_worst_normEM       worst_95CI  p_worst sentences_won/lost  mcnemar_p
+       kshare - kmerge        0.0098 [+0.003, +0.017] 0.0045          0.0174 [+0.009, +0.031]   0.0000            +50/-16     0.0000
+   kshare - regmean_cf        0.0006 [-0.003, +0.004] 0.7480          0.0052 [+0.001, +0.013]   0.0175            +14/-12     0.8450
+        kshare - split       -0.0009 [-0.002, +0.000] 0.2580         -0.0018 [-0.004, +0.000]   0.4175              +0/-3     0.2500
+    kshare_eq - kmerge        0.0101 [+0.003, +0.017] 0.0040          0.0180 [+0.010, +0.032]   0.0000            +50/-15     0.0000
+kshare_eq - regmean_cf        0.0009 [-0.003, +0.005] 0.6250          0.0059 [+0.002, +0.013]   0.0105            +14/-11     0.6900
+        gramG - kmerge        0.0069 [+0.002, +0.012] 0.0030          0.0093 [+0.003, +0.020]   0.0035             +31/-7     0.0001
+        gramU - kmerge        0.0072 [+0.002, +0.013] 0.0055          0.0093 [+0.003, +0.021]   0.0020            +35/-10     0.0002
+   gramG - regmeanG_cf       -0.0012 [-0.003, +0.001] 0.1600         -0.0006 [-0.002, +0.002]   0.8850              +2/-6     0.2891
+    gramU - regmean_cf       -0.0020 [-0.004, -0.001] 0.0095         -0.0029 [-0.005, +0.000]   0.0705              +0/-7     0.0156
+         gramG - gramU       -0.0003 [-0.003, +0.002] 0.8480          0.0000 [-0.003, +0.003]   0.9355              +6/-7     1.0000
+   regmean_cf - kmerge        0.0092 [+0.004, +0.015] 0.0010          0.0122 [+0.005, +0.024]   0.0000             +40/-8     0.0000
+
+[13] SLOT CAPACITY: M tasks share ONE rank-8 slot (M=2 from the pairwise benchmark; M=3,4 = every subset of languages); normalised EM, avg and worst language per slot
+           avg_normEM               worst_normEM              
+M                   2      3      4            2      3      4
+method                                                        
+kmerge          0.989  0.979  0.963        0.981  0.959  0.916
+delta_avg       0.990  0.986  0.975        0.981  0.971  0.952
+regmean_cf      0.998  0.996  0.994        0.993  0.985  0.975
+gramU           0.996  0.996  0.995        0.990  0.984  0.979
+gramG           0.996  0.992  0.991        0.990  0.980  0.972
+split           1.000  0.999  0.997        1.000  0.997  0.989
+kshare          0.999  0.999  0.999        0.998  0.996  0.993
+kshare_eq       0.999  0.998  0.997        0.999  0.995  0.986
+====================================================================================================

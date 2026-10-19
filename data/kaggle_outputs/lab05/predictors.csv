@@ -1,0 +1,3 @@
+scope,n,cosine (K-Merge),self-Gram distortion,generated-input distortion (data-free),unlabeled-input distortion
+K-Merge merges only,36,0.4374983867566381,0.042038359122677886,0.07901654538799639,0.1787927742933646
+all methods pooled,900,0.22974474772208567,0.13962788659412131,0.49693599013020734,0.4261354026833406
