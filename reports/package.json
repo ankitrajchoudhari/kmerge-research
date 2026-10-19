@@ -1,0 +1,9 @@
+{
+  "name": "kmerge-reports",
+  "private": true,
+  "description": "Builds the K-Merge slide decks",
+  "dependencies": {
+    "jszip": "3.10.1",
+    "pptxgenjs": "4.0.1"
+  }
+}

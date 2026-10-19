@@ -1,0 +1,1116 @@
+{
+ "overlap_sets": [
+  {
+   "key": "lab05_pairs",
+   "label": "0.5B lab: pairs",
+   "n": 36,
+   "overlap": 7.8,
+   "new": 92.2,
+   "knew": 4.6,
+   "kself": 4.5,
+   "kslot": 4.6,
+   "in_cov": 68.5,
+   "out_new": 89.9,
+   "dmg": 7.6
+  },
+  {
+   "key": "lab05_triples",
+   "label": "0.5B lab: 3 in a slot",
+   "n": 27,
+   "overlap": 10.9,
+   "new": 89.1,
+   "knew": 4.6,
+   "kself": 4.5,
+   "kslot": 4.9,
+   "in_cov": 74.9,
+   "out_new": 86.6,
+   "dmg": 11.4
+  },
+  {
+   "key": "lab15_pairs",
+   "label": "1.5B lab: pairs",
+   "n": 36,
+   "overlap": 5.6,
+   "new": 94.4,
+   "knew": 4.4,
+   "kself": 4.3,
+   "kslot": 4.3,
+   "in_cov": 65.4,
+   "out_new": 92.6,
+   "dmg": 1.1
+  },
+  {
+   "key": "lab15_triples",
+   "label": "1.5B lab: 3 in a slot",
+   "n": 24,
+   "overlap": 8.2,
+   "new": 91.8,
+   "knew": 4.4,
+   "kself": 4.3,
+   "kslot": 4.7,
+   "in_cov": 73.2,
+   "out_new": 89.9,
+   "dmg": 1.9
+  },
+  {
+   "key": "real_slots",
+   "label": "12 real tasks: K-Merge slots",
+   "n": 86,
+   "overlap": 11.1,
+   "new": 88.9,
+   "knew": 17.5,
+   "kself": 17.1,
+   "kslot": 17.9,
+   "in_cov": 80.7,
+   "out_new": 86.8,
+   "dmg": 8.7
+  },
+  {
+   "key": "real_stress",
+   "label": "12 real tasks in ONE slot",
+   "n": 12,
+   "overlap": 10.2,
+   "new": 89.8,
+   "knew": 17.5,
+   "kself": 17.1,
+   "kslot": 18.2,
+   "in_cov": 80.8,
+   "out_new": 87.8,
+   "dmg": 11.6
+  }
+ ],
+ "n_total": 221,
+ "dem_min_all": 80.5,
+ "dem_max_all": 97.8,
+ "ranges": {
+  "lab05_pairs": {
+   "n": 36,
+   "dem_min": 0.8658,
+   "dem_max": 0.96,
+   "cos_min": 0.0739,
+   "cos_max": 0.237,
+   "dmg_mean": 0.0765,
+   "dmg_max": 0.1959,
+   "zero_dmg": 0.25
+  },
+  "lab05_triples": {
+   "n": 27,
+   "dem_min": 0.8334,
+   "dem_max": 0.9492,
+   "cos_min": 0.0979,
+   "cos_max": 0.2895,
+   "dmg_mean": 0.1141,
+   "dmg_max": 0.2959,
+   "zero_dmg": 0.2222
+  },
+  "lab15_pairs": {
+   "n": 36,
+   "dem_min": 0.8348,
+   "dem_max": 0.9776,
+   "cos_min": 0.0069,
+   "cos_max": 0.3207,
+   "dmg_mean": 0.0108,
+   "dmg_max": 0.0625,
+   "zero_dmg": 0.4444
+  },
+  "lab15_triples": {
+   "n": 24,
+   "dem_min": 0.8582,
+   "dem_max": 0.9612,
+   "cos_min": 0.0261,
+   "cos_max": 0.2783,
+   "dmg_mean": 0.0186,
+   "dmg_max": 0.0729,
+   "zero_dmg": 0.0417
+  },
+  "real_slots": {
+   "n": 86,
+   "dem_min": 0.8053,
+   "dem_max": 0.948,
+   "cos_min": 0.0379,
+   "cos_max": 0.3593,
+   "dmg_mean": 0.087,
+   "dmg_max": 0.4107,
+   "zero_dmg": 0.0
+  },
+  "real_stress": {
+   "n": 12,
+   "dem_min": 0.8589,
+   "dem_max": 0.9205,
+   "cos_min": 0.0911,
+   "cos_max": 0.2381,
+   "dmg_mean": 0.1157,
+   "dmg_max": 0.3345,
+   "zero_dmg": 0.0
+  },
+  "all": {
+   "n": 221,
+   "dem_min": 0.8053,
+   "dem_max": 0.9776
+  }
+ },
+ "rho": {
+  "lab05_pairs": {
+   "neg_cos": {
+    "rho": 0.4375,
+    "lo": 0.1937,
+    "hi": 0.6166,
+    "d": null,
+    "dlo": null,
+    "dhi": null,
+    "pb": null
+   },
+   "demand2": {
+    "rho": 0.5796,
+    "lo": 0.3966,
+    "hi": 0.7419,
+    "d": 0.1421,
+    "dlo": 0.0146,
+    "dhi": 0.3229,
+    "pb": 0.98
+   },
+   "demand_out": {
+    "rho": 0.5566,
+    "lo": 0.344,
+    "hi": 0.7424,
+    "d": 0.1191,
+    "dlo": -0.0304,
+    "dhi": 0.3104,
+    "pb": 0.946
+   },
+   "demand_in": {
+    "rho": 0.6256,
+    "lo": 0.467,
+    "hi": 0.7746,
+    "d": 0.1881,
+    "dlo": 0.0201,
+    "dhi": 0.3869,
+    "pb": 0.986
+   },
+   "knew": {
+    "rho": -0.372,
+    "lo": -0.6331,
+    "hi": -0.0666,
+    "d": -0.8095,
+    "dlo": -1.074,
+    "dhi": -0.4228,
+    "pb": 0.0
+   },
+   "conflict": {
+    "rho": 0.3083,
+    "lo": -0.0144,
+    "hi": 0.5028,
+    "d": -0.1292,
+    "dlo": -0.2584,
+    "dhi": -0.0622,
+    "pb": 0.004
+   }
+  },
+  "lab05_pairs+triples": {
+   "neg_cos": {
+    "rho": 0.2717,
+    "lo": 0.1045,
+    "hi": 0.449,
+    "d": null,
+    "dlo": null,
+    "dhi": null,
+    "pb": null
+   },
+   "demand2": {
+    "rho": 0.4136,
+    "lo": 0.2883,
+    "hi": 0.5611,
+    "d": 0.1418,
+    "dlo": 0.0612,
+    "dhi": 0.2442,
+    "pb": 0.999
+   },
+   "demand_out": {
+    "rho": 0.3933,
+    "lo": 0.2561,
+    "hi": 0.5528,
+    "d": 0.1216,
+    "dlo": 0.0328,
+    "dhi": 0.2338,
+    "pb": 0.996
+   },
+   "demand_in": {
+    "rho": 0.4434,
+    "lo": 0.3181,
+    "hi": 0.5874,
+    "d": 0.1717,
+    "dlo": 0.0351,
+    "dhi": 0.3227,
+    "pb": 0.993
+   },
+   "knew": {
+    "rho": -0.3793,
+    "lo": -0.58,
+    "hi": -0.1617,
+    "d": -0.651,
+    "dlo": -0.9207,
+    "dhi": -0.357,
+    "pb": 0.0
+   },
+   "conflict": {
+    "rho": 0.2075,
+    "lo": 0.0169,
+    "hi": 0.3865,
+    "d": -0.0643,
+    "dlo": -0.1614,
+    "dhi": 0.0205,
+    "pb": 0.06
+   }
+  },
+  "lab15_pairs": {
+   "neg_cos": {
+    "rho": -0.3419,
+    "lo": -0.5585,
+    "hi": -0.0243,
+    "d": null,
+    "dlo": null,
+    "dhi": null,
+    "pb": null
+   },
+   "demand2": {
+    "rho": -0.2538,
+    "lo": -0.5398,
+    "hi": 0.1362,
+    "d": 0.0881,
+    "dlo": -0.1056,
+    "dhi": 0.3081,
+    "pb": 0.815
+   },
+   "demand_out": {
+    "rho": -0.2657,
+    "lo": -0.5576,
+    "hi": 0.1242,
+    "d": 0.0762,
+    "dlo": -0.1428,
+    "dhi": 0.3011,
+    "pb": 0.764
+   },
+   "demand_in": {
+    "rho": -0.1605,
+    "lo": -0.498,
+    "hi": 0.268,
+    "d": 0.1814,
+    "dlo": -0.1089,
+    "dhi": 0.5024,
+    "pb": 0.872
+   },
+   "knew": {
+    "rho": 0.6169,
+    "lo": 0.3144,
+    "hi": 0.8321,
+    "d": 0.9588,
+    "dlo": 0.4265,
+    "dhi": 1.3374,
+    "pb": 1.0
+   },
+   "conflict": {
+    "rho": -0.3433,
+    "lo": -0.5749,
+    "hi": 0.0082,
+    "d": -0.0014,
+    "dlo": -0.0768,
+    "dhi": 0.0806,
+    "pb": 0.603
+   }
+  },
+  "lab15_pairs+triples": {
+   "neg_cos": {
+    "rho": -0.4258,
+    "lo": -0.5859,
+    "hi": -0.2028,
+    "d": null,
+    "dlo": null,
+    "dhi": null,
+    "pb": null
+   },
+   "demand2": {
+    "rho": -0.3704,
+    "lo": -0.5393,
+    "hi": -0.1378,
+    "d": 0.0554,
+    "dlo": -0.062,
+    "dhi": 0.1812,
+    "pb": 0.834
+   },
+   "demand_out": {
+    "rho": -0.3757,
+    "lo": -0.5476,
+    "hi": -0.1463,
+    "d": 0.0501,
+    "dlo": -0.0736,
+    "dhi": 0.1784,
+    "pb": 0.804
+   },
+   "demand_in": {
+    "rho": -0.2612,
+    "lo": -0.4617,
+    "hi": -0.0101,
+    "d": 0.1646,
+    "dlo": -0.0323,
+    "dhi": 0.371,
+    "pb": 0.956
+   },
+   "knew": {
+    "rho": 0.5947,
+    "lo": 0.3594,
+    "hi": 0.78,
+    "d": 1.0205,
+    "dlo": 0.6068,
+    "dhi": 1.3248,
+    "pb": 1.0
+   },
+   "conflict": {
+    "rho": -0.422,
+    "lo": -0.5872,
+    "hi": -0.1855,
+    "d": 0.0038,
+    "dlo": -0.0471,
+    "dhi": 0.0565,
+    "pb": 0.578
+   }
+  },
+  "real_slots": {
+   "neg_cos": {
+    "rho": 0.6533,
+    "lo": 0.4579,
+    "hi": 0.7362,
+    "d": null,
+    "dlo": null,
+    "dhi": null,
+    "pb": null
+   },
+   "demand2": {
+    "rho": 0.6196,
+    "lo": 0.4172,
+    "hi": 0.7242,
+    "d": -0.0338,
+    "dlo": -0.06,
+    "dhi": 0.0039,
+    "pb": 0.046
+   },
+   "demand_out": {
+    "rho": 0.5918,
+    "lo": 0.3865,
+    "hi": 0.7071,
+    "d": -0.0616,
+    "dlo": -0.1074,
+    "dhi": -0.0092,
+    "pb": 0.008
+   },
+   "demand_in": {
+    "rho": 0.3196,
+    "lo": 0.1434,
+    "hi": 0.439,
+    "d": -0.3337,
+    "dlo": -0.4256,
+    "dhi": -0.1993,
+    "pb": 0.0
+   },
+   "knew": {
+    "rho": -0.7179,
+    "lo": -0.7778,
+    "hi": -0.5705,
+    "d": -1.3712,
+    "dlo": -1.4684,
+    "dhi": -1.1073,
+    "pb": 0.0
+   },
+   "conflict": {
+    "rho": 0.6747,
+    "lo": 0.4744,
+    "hi": 0.7494,
+    "d": 0.0214,
+    "dlo": -0.0002,
+    "dhi": 0.0498,
+    "pb": 0.973
+   }
+  }
+ },
+ "real_partial": {
+  "neg_cos": {
+   "raw": 0.6533,
+   "partial_n": 0.6085,
+   "partial_type": 0.3954,
+   "partial_n_type": 0.0045
+  },
+  "demand2": {
+   "raw": 0.6196,
+   "partial_n": 0.5677,
+   "partial_type": 0.3834,
+   "partial_n_type": 0.0273
+  },
+  "demand_out": {
+   "raw": 0.5918,
+   "partial_n": 0.5344,
+   "partial_type": 0.3773,
+   "partial_n_type": -0.0066
+  },
+  "demand_in": {
+   "raw": 0.3196,
+   "partial_n": 0.3722,
+   "partial_type": -0.0942,
+   "partial_n_type": -0.0181
+  },
+  "knew": {
+   "raw": -0.7179,
+   "partial_n": -0.7338,
+   "partial_type": -0.0852,
+   "partial_n_type": -0.0061
+  },
+  "conflict": {
+   "raw": 0.6747,
+   "partial_n": 0.6346,
+   "partial_type": 0.4279,
+   "partial_n_type": 0.042
+  }
+ },
+ "real_rho_n_damage": 0.3015,
+ "type_means": {
+  "gec": {
+   "damage": 19.4,
+   "cos": 0.12,
+   "demand": 91.0,
+   "agree": 0.36
+  },
+  "sum": {
+   "damage": 5.3,
+   "cos": 0.23,
+   "demand": 86.8,
+   "agree": 0.58
+  },
+  "qa": {
+   "damage": 0.4,
+   "cos": 0.19,
+   "demand": 88.2,
+   "agree": 0.53
+  }
+ },
+ "who": {
+  "lab05": {
+   "runs": 70,
+   "km_avg": 92.8,
+   "dm_avg": 92.3,
+   "km_worst": 81.3,
+   "dm_worst": 81.0,
+   "d_worst": -0.4,
+   "lo": -1.1,
+   "hi": 0.4
+  },
+  "lab15": {
+   "runs": 68,
+   "km_avg": 98.5,
+   "dm_avg": 98.5,
+   "km_worst": 95.9,
+   "dm_worst": 95.9,
+   "d_worst": 0.0,
+   "lo": 0.0,
+   "hi": 0.0
+  }
+ },
+ "who_same": {
+  "lab05": {
+   "same": 60,
+   "runs": 70,
+   "missing": 2
+  },
+  "lab15": {
+   "same": 64,
+   "runs": 68,
+   "missing": 4
+  }
+ },
+ "identity_err": 1.6653345369377348e-16,
+ "spearman_cos_demand": {
+  "lab05_pairs": -0.9107,
+  "lab15_pairs": -0.8824,
+  "real_slots": -0.9754
+ },
+ "incremental": [
+  {
+   "set": "lab05_pairs",
+   "x": "demand2",
+   "given": "cos",
+   "partial": 0.4877,
+   "lo": 0.2619,
+   "hi": 0.7606
+  },
+  {
+   "set": "lab05_pairs",
+   "x": "neg_cos",
+   "given": "demand2",
+   "partial": -0.2684,
+   "lo": -0.6557,
+   "hi": 0.1415
+  },
+  {
+   "set": "lab15_pairs",
+   "x": "demand2",
+   "given": "cos",
+   "partial": 0.1083,
+   "lo": -0.3073,
+   "hi": 0.469
+  },
+  {
+   "set": "lab15_pairs",
+   "x": "neg_cos",
+   "given": "demand2",
+   "partial": -0.2591,
+   "lo": -0.5373,
+   "hi": 0.1524
+  },
+  {
+   "set": "real_slots",
+   "x": "demand2",
+   "given": "cos",
+   "partial": -0.1064,
+   "lo": -0.2255,
+   "hi": 0.1554
+  },
+  {
+   "set": "real_slots",
+   "x": "neg_cos",
+   "given": "demand2",
+   "partial": 0.2834,
+   "lo": 0.069,
+   "hi": 0.367
+  }
+ ],
+ "direction": {
+  "lab05_pairs|demand2": {
+   "ds": "lab05_pairs",
+   "pred": "demand2",
+   "right": 16,
+   "wrong": 2,
+   "tied": 0,
+   "sign_p": 0.0013
+  },
+  "lab05_pairs|neg_cos": {
+   "ds": "lab05_pairs",
+   "pred": "neg_cos",
+   "right": 0,
+   "wrong": 0,
+   "tied": 18,
+   "sign_p": null
+  },
+  "lab15_pairs|demand2": {
+   "ds": "lab15_pairs",
+   "pred": "demand2",
+   "right": 10,
+   "wrong": 6,
+   "tied": 2,
+   "sign_p": 0.4545
+  },
+  "lab15_pairs|neg_cos": {
+   "ds": "lab15_pairs",
+   "pred": "neg_cos",
+   "right": 0,
+   "wrong": 0,
+   "tied": 18,
+   "sign_p": null
+  },
+  "lab05_triples|demand2": {
+   "ds": "lab05_triples",
+   "pred": "demand2",
+   "right": 21,
+   "wrong": 6,
+   "tied": 0,
+   "sign_p": 0.0059
+  },
+  "lab05_triples|neg_cos": {
+   "ds": "lab05_triples",
+   "pred": "neg_cos",
+   "right": 20,
+   "wrong": 7,
+   "tied": 0,
+   "sign_p": 0.0192
+  },
+  "lab15_triples|demand2": {
+   "ds": "lab15_triples",
+   "pred": "demand2",
+   "right": 8,
+   "wrong": 15,
+   "tied": 1,
+   "sign_p": 0.21
+  },
+  "lab15_triples|neg_cos": {
+   "ds": "lab15_triples",
+   "pred": "neg_cos",
+   "right": 7,
+   "wrong": 16,
+   "tied": 1,
+   "sign_p": 0.0931
+  },
+  "real_slots|demand2": {
+   "ds": "real_slots",
+   "pred": "demand2",
+   "right": 175,
+   "wrong": 105,
+   "tied": 0,
+   "sign_p": 0.0
+  },
+  "real_slots|neg_cos": {
+   "ds": "real_slots",
+   "pred": "neg_cos",
+   "right": 170,
+   "wrong": 110,
+   "tied": 0,
+   "sign_p": 0.0004
+  }
+ },
+ "asym": {
+  "lab05": {
+   "A_cos": 0.9802,
+   "B_cos": 0.1503
+  },
+  "lab15": {
+   "A_cos": 0.9684,
+   "B_cos": 0.107
+  },
+  "real": {
+   "A_cos": 0.9943,
+   "A_min": 0.9936,
+   "B_cos": 0.0601,
+   "B_max": 0.3066,
+   "B_min": 0.0057,
+   "pairs": 132
+  }
+ },
+ "energy": [
+  {
+   "k": 1,
+   "pct": 35.8
+  },
+  {
+   "k": 3,
+   "pct": 54.8
+  },
+  {
+   "k": 5,
+   "pct": 64.5
+  },
+  {
+   "k": 8,
+   "pct": 74.2
+  },
+  {
+   "k": 16,
+   "pct": 88.8
+  },
+  {
+   "k": 32,
+   "pct": 100.0
+  }
+ ],
+ "kself_real": {
+  "gec_de": 17.13,
+  "gec_en": 16.15,
+  "gec_es": 16.28,
+  "gec_it": 15.68,
+  "qa_de": 18.0,
+  "qa_en": 18.48,
+  "qa_es": 17.65,
+  "qa_it": 17.97,
+  "sum_de": 17.24,
+  "sum_en": 17.64,
+  "sum_es": 16.92,
+  "sum_it": 15.91
+ },
+ "layer_profiles": {
+  "lab05_pairs": [
+   15.7,
+   4.1,
+   5.2,
+   8.3,
+   8.2,
+   7.6,
+   14.0,
+   10.7,
+   12.3,
+   9.9,
+   10.7,
+   13.2,
+   12.0,
+   9.9,
+   8.7,
+   8.1,
+   7.8,
+   5.0,
+   4.4,
+   5.1,
+   4.0,
+   6.5,
+   2.3,
+   3.2
+  ],
+  "lab15_pairs": [
+   6.2,
+   4.2,
+   5.7,
+   5.2,
+   4.9,
+   5.2,
+   5.5,
+   7.5,
+   6.3,
+   6.4,
+   9.8,
+   7.0,
+   7.0,
+   6.5,
+   7.7,
+   8.4,
+   8.3,
+   7.2,
+   5.6,
+   5.3,
+   3.6,
+   4.6,
+   3.3,
+   3.2,
+   2.0,
+   4.2,
+   2.8,
+   2.1
+  ],
+  "real_slots": [
+   7.2,
+   8.6,
+   9.0,
+   9.2,
+   9.5,
+   11.8,
+   11.2,
+   11.9,
+   11.9,
+   12.8,
+   15.6,
+   14.2,
+   14.1,
+   13.8,
+   13.1,
+   16.2,
+   14.7,
+   17.1,
+   14.3,
+   13.4,
+   10.9,
+   10.3,
+   9.1,
+   8.6,
+   8.5,
+   8.3,
+   7.7,
+   6.5
+  ]
+ },
+ "layer_test": {
+  "lab05|neg_cos": {
+   "pooled": 0.64,
+   "within": 0.59,
+   "n": 1728
+  },
+  "lab05|demand": {
+   "pooled": 0.6,
+   "within": 0.55,
+   "n": 1728
+  },
+  "lab05|neg_subov": {
+   "pooled": 0.48,
+   "within": 0.39,
+   "n": 1728
+  },
+  "lab15|neg_cos": {
+   "pooled": 0.64,
+   "within": 0.56,
+   "n": 2016
+  },
+  "lab15|demand": {
+   "pooled": 0.51,
+   "within": 0.35,
+   "n": 2016
+  },
+  "lab15|neg_subov": {
+   "pooled": 0.46,
+   "within": 0.29,
+   "n": 2016
+  }
+ },
+ "overlap_matrix": {
+  "tasks": [
+   "gec_en",
+   "gec_de",
+   "gec_es",
+   "gec_it",
+   "sum_en",
+   "sum_de",
+   "sum_es",
+   "sum_it",
+   "qa_en",
+   "qa_de",
+   "qa_es",
+   "qa_it"
+  ],
+  "values": [
+   [
+    null,
+    7.4,
+    7.8,
+    7.4,
+    5.1,
+    4.6,
+    4.7,
+    4.5,
+    4.9,
+    4.6,
+    4.6,
+    4.5
+   ],
+   [
+    7.1,
+    null,
+    7.5,
+    8.1,
+    4.5,
+    5.4,
+    4.7,
+    4.7,
+    4.6,
+    5.5,
+    4.8,
+    4.7
+   ],
+   [
+    8.1,
+    8.1,
+    null,
+    8.3,
+    4.9,
+    5.2,
+    5.4,
+    5.0,
+    4.6,
+    5.0,
+    5.1,
+    5.1
+   ],
+   [
+    7.6,
+    8.8,
+    8.2,
+    null,
+    4.5,
+    4.9,
+    4.9,
+    5.1,
+    4.4,
+    4.9,
+    5.1,
+    5.2
+   ],
+   [
+    4.8,
+    4.2,
+    4.3,
+    4.2,
+    null,
+    12.1,
+    13.7,
+    12.1,
+    4.7,
+    4.3,
+    4.5,
+    4.4
+   ],
+   [
+    4.2,
+    4.8,
+    4.3,
+    4.3,
+    11.9,
+    null,
+    12.2,
+    12.0,
+    4.2,
+    5.1,
+    4.4,
+    4.5
+   ],
+   [
+    4.2,
+    4.3,
+    4.6,
+    4.3,
+    13.4,
+    12.1,
+    null,
+    15.8,
+    4.3,
+    4.6,
+    4.7,
+    4.5
+   ],
+   [
+    4.1,
+    4.3,
+    4.4,
+    4.6,
+    11.3,
+    11.5,
+    15.2,
+    null,
+    4.0,
+    4.6,
+    4.5,
+    4.7
+   ],
+   [
+    4.6,
+    4.3,
+    4.1,
+    4.2,
+    4.7,
+    4.3,
+    4.4,
+    4.2,
+    null,
+    8.2,
+    9.4,
+    8.5
+   ],
+   [
+    4.2,
+    5.2,
+    4.3,
+    4.5,
+    4.3,
+    4.9,
+    4.6,
+    4.6,
+    7.4,
+    null,
+    10.6,
+    10.0
+   ],
+   [
+    4.3,
+    4.4,
+    4.6,
+    4.3,
+    4.3,
+    4.4,
+    4.8,
+    4.5,
+    8.7,
+    10.7,
+    null,
+    13.2
+   ],
+   [
+    4.2,
+    4.5,
+    4.3,
+    4.6,
+    4.3,
+    4.6,
+    4.5,
+    4.6,
+    8.0,
+    10.2,
+    13.2,
+    null
+   ]
+  ]
+ },
+ "overlap_groups": {
+  "neither": {
+   "overlap": 4.5,
+   "cos": 0.02,
+   "n": 72,
+   "ov_out": 6.3
+  },
+  "same_language": {
+   "overlap": 4.9,
+   "cos": 0.02,
+   "n": 24,
+   "ov_out": 6.8
+  },
+  "same_type": {
+   "overlap": 10.2,
+   "cos": 0.16,
+   "n": 36,
+   "ov_out": 12.5
+  }
+ },
+ "overlap_max": 15.8,
+ "overlap_min": 4.0,
+ "split_11": {
+  "split_avg_11": [
+   0.9852,
+   0.9885
+  ],
+  "split_worst": [
+   0.9357,
+   0.9404
+  ],
+  "kmerge_avg_11": [
+   0.8871,
+   0.8804
+  ],
+  "kshare_avg_11": [
+   0.9852,
+   0.988
+  ],
+  "directions_per_task": "32/11 = 2.9 (10 tasks get 3, 1 gets 2)"
+ },
+ "adaptive": {
+  "rule": "energy-greedy: each direction goes to the task where it keeps the most of its own energy (alloc_sum)",
+  "stress_4dir": [
+   0.907,
+   0.871
+  ],
+  "stress_16dir": [
+   0.96,
+   0.982
+  ]
+ },
+ "examples": [
+  {
+   "target": "sum_es",
+   "K": 4,
+   "order": "random",
+   "seed": 1,
+   "n": 3,
+   "overlap": 19.5,
+   "new": 80.5,
+   "cos": 0.36,
+   "damage": 1.6
+  },
+  {
+   "target": "qa_de",
+   "K": 4,
+   "order": "random",
+   "seed": 0,
+   "n": 4,
+   "overlap": 12.4,
+   "new": 87.6,
+   "cos": 0.22,
+   "damage": -10.2
+  },
+  {
+   "target": "gec_it",
+   "K": 2,
+   "order": "clustered",
+   "seed": 1,
+   "n": 11,
+   "overlap": 8.2,
+   "new": 91.8,
+   "cos": 0.1,
+   "damage": 41.1
+  }
+ ]
+}
